@@ -10,6 +10,12 @@ spring:
             - "Path=/request-notification/**"
           filters:
             - "StripPrefix=1"
+        - id: user-storage-route
+          uri: lb://user-storage-microservice
+          predicates:
+            - "Path=/user-storage/**"
+          filters:
+            - "StripPrefix=1"
 
 server:
   port: 8090
