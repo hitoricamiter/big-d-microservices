@@ -1,6 +1,8 @@
 spring:
   application:
     name: request-notification-microservice
+  kafka:
+    bootstrap-servers: localhost:9092
 
   config:
     import: "configserver:"
@@ -10,7 +12,16 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-
+    function:
+      definition: sendToUserStorage
+    stream:
+      bindings:
+        sendToUserStorage-out-0:
+          destination: user-storage-topic
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
 server:
   port: 8083
 

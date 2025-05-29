@@ -10,6 +10,17 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+    function:
+      definition: processRequestNotification
+    stream:
+      bindings:
+        processRequestNotification-in-0:
+          destination: user-storage-topic
+          group: user-storage-group
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
 
 server:
   port: 8085
