@@ -1,5 +1,6 @@
 package ru.zaikin.requestnotificationmicroservice.controller;
 
+import jakarta.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import ru.zaikin.requestnotificationmicroservice.model.UserFormBlank;
 import ru.zaikin.requestnotificationmicroservice.service.UserEventSender;
 
 @Controller
+@Named
 public class RegistrationController {
 
     private final UserEventSender userEventSender;
